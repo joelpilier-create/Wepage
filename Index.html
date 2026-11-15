@@ -1,0 +1,1191 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Miel Pura & Artesanal — Yonaisi Pamela Pilier</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        honey: {
+                            50: '#fffbeb',
+                            100: '#fef3c7',
+                            200: '#fde68a',
+                            300: '#fcd34d',
+                            400: '#fbbf24',
+                            500: '#f59e0b',
+                            600: '#d97706',
+                            700: '#b45309',
+                            800: '#92400e',
+                            900: '#78350f',
+                            950: '#451a03',
+                        },
+                        amberbg: '#fffdf7'
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #fffdf7;
+        }
+        .honey-gradient {
+            background: linear-gradient(135deg, #78350f 0%, #b45309 50%, #d97706 100%);
+        }
+        .gold-glow:hover {
+            box-shadow: 0 10px 25px -5px rgba(245, 158, 11, 0.4);
+        }
+        /* Hide scrollbar for clean horizontal scrolling on mobile tabs */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="text-slate-800 font-sans antialiased flex flex-col min-h-screen">
+
+    <!-- BARRA DE ANUNCIO SUPERIOR -->
+    <div class="bg-honey-900 text-honey-100 text-xs sm:text-sm py-2 px-4 text-center font-medium tracking-wide flex items-center justify-center gap-2">
+        <i class="fa-solid fa-truck-fast text-honey-300"></i>
+        <span>Envío a toda la República Dominicana | 100% Miel Orgánica & Artesanal</span>
+    </div>
+
+    <!-- NAVBAR -->
+    <header class="sticky top-0 z-40 bg-amberbg/90 backdrop-blur-md border-b border-honey-200/60 shadow-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <!-- BRAND LOGO -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-honey-400 to-honey-600 flex items-center justify-center shadow-md shadow-honey-500/20 group-hover:scale-105 transition-transform duration-300">
+                        <i class="fa-solid fa-jar text-white text-xl"></i>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-serif font-bold text-xl sm:text-2xl text-honey-950 tracking-tight leading-tight">Miel Pura</span>
+                        <span class="text-xs font-semibold text-honey-700 tracking-wider uppercase">Yonaisi Pamela Pilier</span>
+                    </div>
+                </a>
+
+                <!-- DESKTOP NAVIGATION LINKS -->
+                <nav class="hidden md:flex items-center space-x-8 text-sm font-semibold text-slate-700">
+                    <a href="#inicio" class="hover:text-honey-600 transition-colors">Inicio</a>
+                    <a href="#productos" class="hover:text-honey-600 transition-colors">Productos</a>
+                    <a href="#beneficios" class="hover:text-honey-600 transition-colors">Beneficios</a>
+                    <a href="#nosotros" class="hover:text-honey-600 transition-colors">Nosotros</a>
+                    <a href="#testimonios" class="hover:text-honey-600 transition-colors">Testimonios</a>
+                    <a href="#contacto" class="hover:text-honey-600 transition-colors">Contacto</a>
+                </nav>
+
+                <!-- SEARCH & ACTIONS -->
+                <div class="flex items-center gap-3">
+                    <!-- Search Input (Desktop) -->
+                    <div class="relative hidden lg:block w-48">
+                        <input type="text" id="searchInputDesktop" oninput="handleSearch(this.value)" placeholder="Buscar miel..." class="w-full bg-honey-100/50 border border-honey-200 text-xs rounded-full py-2 pl-9 pr-3 text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-honey-500 focus:bg-white transition-all">
+                        <i class="fa-solid fa-magnifying-glass absolute left-3 top-2.5 text-slate-400 text-xs"></i>
+                    </div>
+
+                    <!-- Phone Quick Call (Desktop) -->
+                    <a href="tel:+18493508614" class="hidden xl:flex items-center gap-2 text-xs font-bold text-honey-800 bg-honey-100 hover:bg-honey-200 px-3 py-2 rounded-full transition-colors border border-honey-300/60">
+                        <i class="fa-solid fa-phone text-honey-600"></i>
+                        <span>+1 (849) 350-8614</span>
+                    </a>
+
+                    <!-- Cart Button -->
+                    <button onclick="toggleCartDrawer()" class="relative p-2.5 rounded-full text-slate-700 hover:text-honey-700 hover:bg-honey-100/70 transition-all focus:outline-none" aria-label="Carrito de compras">
+                        <i class="fa-solid fa-basket-shopping text-xl"></i>
+                        <span id="cartCountBadge" class="absolute -top-1 -right-1 bg-honey-600 text-white font-bold text-[10px] w-5 h-5 rounded-full flex items-center justify-center border-2 border-amberbg shadow-sm">0</span>
+                    </button>
+
+                    <!-- Mobile Menu Trigger -->
+                    <button onclick="toggleMobileMenu()" class="md:hidden p-2 rounded-lg text-slate-700 hover:bg-honey-100 focus:outline-none">
+                        <i class="fa-solid fa-bars text-xl" id="menuIcon"></i>
+                    </button>
+                </div>
+
+            </div>
+
+            <!-- Mobile Search Bar -->
+            <div class="pb-3 lg:hidden">
+                <div class="relative w-full">
+                    <input type="text" id="searchInputMobile" oninput="handleSearch(this.value)" placeholder="Buscar miel, panal o kits..." class="w-full bg-honey-100/60 border border-honey-200 text-sm rounded-full py-2 pl-9 pr-4 text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-honey-500">
+                    <i class="fa-solid fa-magnifying-glass absolute left-3 top-3 text-slate-400 text-xs"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- MOBILE MENU DROPDOWN -->
+        <div id="mobileMenu" class="hidden md:hidden border-t border-honey-200 bg-amberbg px-4 pt-3 pb-6 space-y-3 font-medium text-slate-700 shadow-lg">
+            <a href="#inicio" onclick="toggleMobileMenu()" class="block py-2 hover:text-honey-700 border-b border-honey-100">Inicio</a>
+            <a href="#productos" onclick="toggleMobileMenu()" class="block py-2 hover:text-honey-700 border-b border-honey-100">Productos</a>
+            <a href="#beneficios" onclick="toggleMobileMenu()" class="block py-2 hover:text-honey-700 border-b border-honey-100">Beneficios</a>
+            <a href="#nosotros" onclick="toggleMobileMenu()" class="block py-2 hover:text-honey-700 border-b border-honey-100">Nosotros</a>
+            <a href="#testimonios" onclick="toggleMobileMenu()" class="block py-2 hover:text-honey-700 border-b border-honey-100">Testimonios</a>
+            <a href="#contacto" onclick="toggleMobileMenu()" class="block py-2 hover:text-honey-700">Contacto</a>
+            <div class="pt-2 flex flex-col gap-2">
+                <a href="tel:+18493508614" class="flex items-center justify-center gap-2 w-full py-2.5 bg-honey-100 text-honey-900 font-bold rounded-xl text-sm">
+                    <i class="fa-solid fa-phone"></i> +1 (849) 350-8614
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        
+        <!-- HERO SECTION -->
+        <section id="inicio" class="relative overflow-hidden pt-12 pb-20 lg:pt-20 lg:pb-28">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    
+                    <!-- Left Hero Content -->
+                    <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                        <div class="inline-flex items-center gap-2 bg-honey-100 border border-honey-300/80 text-honey-800 text-xs sm:text-sm font-semibold px-4 py-1.5 rounded-full shadow-sm">
+                            <i class="fa-solid fa-certificate text-honey-600"></i>
+                            <span>Cosecha 100% Dominicana & Artesanal</span>
+                        </div>
+                        
+                        <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-extrabold text-honey-950 leading-tight">
+                            El dulzor puro y natural directo de <span class="text-transparent bg-clip-text bg-gradient-to-r from-honey-600 via-honey-500 to-amber-700">nuestro panal</span> a tu hogar.
+                        </h1>
+
+                        <p class="text-slate-600 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 font-normal">
+                            Disfruta de la miel más selecta y cristalina procesada con dedicación artesanal por <strong>Yonaisi Pamela Pilier</strong>. Sin conservantes, ni aditivos, conservando todas sus propiedades medicinales y nutritivas.
+                        </p>
+
+                        <!-- CTA Buttons -->
+                        <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+                            <a href="#productos" class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-honey-500 to-honey-600 hover:from-honey-600 hover:to-honey-700 text-white font-bold rounded-2xl shadow-lg shadow-honey-500/30 hover:scale-105 transition-all text-center flex items-center justify-center gap-3">
+                                <span>Explorar Catálogo</span>
+                                <i class="fa-solid fa-arrow-right text-sm"></i>
+                            </a>
+                            <a href="#contacto" class="w-full sm:w-auto px-8 py-4 bg-white border border-honey-300 hover:border-honey-500 text-honey-900 font-bold rounded-2xl shadow-sm hover:bg-honey-50/50 transition-all text-center flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-headset text-honey-600"></i>
+                                <span>Contactar Ventas</span>
+                            </a>
+                        </div>
+
+                        <!-- Highlights Badge Row -->
+                        <div class="grid grid-cols-3 gap-4 pt-8 border-t border-honey-200/80">
+                            <div>
+                                <p class="font-serif text-2xl font-bold text-honey-900">100%</p>
+                                <p class="text-xs text-slate-500 font-medium">Pura & Orgánica</p>
+                            </div>
+                            <div>
+                                <p class="font-serif text-2xl font-bold text-honey-900">RD$ 0</p>
+                                <p class="text-xs text-slate-500 font-medium">Envío desde RD$1,500</p>
+                            </div>
+                            <div>
+                                <p class="font-serif text-2xl font-bold text-honey-900">4.9 ★</p>
+                                <p class="text-xs text-slate-500 font-medium">Clientes Satisfechos</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Right Hero Image Visual -->
+                    <div class="lg:col-span-5 relative flex justify-center">
+                        <div class="relative w-72 sm:w-80 md:w-96 aspect-square rounded-3xl bg-gradient-to-tr from-honey-300 to-honey-100 p-4 shadow-2xl ring-1 ring-honey-300/50 flex items-center justify-center">
+                            <!-- Honey Jar SVG / Illustration Canvas -->
+                            <div class="w-full h-full rounded-2xl bg-white/80 backdrop-blur-sm border border-white flex flex-col items-center justify-center p-6 text-center shadow-inner relative overflow-hidden">
+                                <div class="absolute -top-10 -right-10 w-32 h-32 bg-honey-200/50 rounded-full blur-2xl"></div>
+                                <div class="w-28 h-28 sm:w-36 sm:h-36 mb-4 rounded-full bg-honey-100 border-4 border-honey-300 flex items-center justify-center text-honey-600 shadow-md">
+                                    <i class="fa-solid fa-jar text-6xl sm:text-7xl"></i>
+                                </div>
+                                <span class="font-serif text-2xl font-bold text-honey-950">Miel Artesanal</span>
+                                <span class="text-xs font-bold text-honey-600 uppercase tracking-widest mt-1">Cosecha de la Isla</span>
+                                <div class="mt-4 flex items-center gap-1 text-honey-500 text-sm">
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                </div>
+                            </div>
+                            <!-- Floating Badge -->
+                            <div class="absolute -bottom-5 -left-5 bg-white p-3 rounded-2xl shadow-xl border border-honey-100 flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-full bg-honey-500 text-white flex items-center justify-center font-bold">
+                                    <i class="fa-solid fa-bee"></i>
+                                </div>
+                                <div class="text-left pr-2">
+                                    <p class="text-xs font-bold text-slate-800">Directo del Apicultor</p>
+                                    <p class="text-[10px] text-slate-500">Garantía de Sabor</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- BENEFITS / QUALITY GUARANTEE -->
+        <section id="beneficios" class="py-12 bg-honey-100/60 border-y border-honey-200/70">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    
+                    <div class="bg-white p-6 rounded-2xl border border-honey-200 shadow-sm flex items-start gap-4 hover:-translate-y-1 transition-transform">
+                        <div class="w-12 h-12 rounded-xl bg-honey-100 text-honey-700 flex items-center justify-center text-xl shrink-0">
+                            <i class="fa-solid fa-leaf"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-900 text-base">100% Orgánica</h3>
+                            <p class="text-xs text-slate-600 mt-1">Sin aditivos, azúcares añadidos ni jarabes de maíz.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-2xl border border-honey-200 shadow-sm flex items-start gap-4 hover:-translate-y-1 transition-transform">
+                        <div class="w-12 h-12 rounded-xl bg-honey-100 text-honey-700 flex items-center justify-center text-xl shrink-0">
+                            <i class="fa-solid fa-hand-holding-heart"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-900 text-base">Cosecha Artesanal</h3>
+                            <p class="text-xs text-slate-600 mt-1">Extraída cuidadosamente preservando polen y enzimas naturales.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-2xl border border-honey-200 shadow-sm flex items-start gap-4 hover:-translate-y-1 transition-transform">
+                        <div class="w-12 h-12 rounded-xl bg-honey-100 text-honey-700 flex items-center justify-center text-xl shrink-0">
+                            <i class="fa-solid fa-truck-ramp-box"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-900 text-base">Envío Rápido RD</h3>
+                            <p class="text-xs text-slate-600 mt-1">Entregas seguras a Santo Domingo, Santiago y todas las provincias.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-2xl border border-honey-200 shadow-sm flex items-start gap-4 hover:-translate-y-1 transition-transform">
+                        <div class="w-12 h-12 rounded-xl bg-honey-100 text-honey-700 flex items-center justify-center text-xl shrink-0">
+                            <i class="fa-solid fa-shield-halved"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-900 text-base">Calidad Directa</h3>
+                            <p class="text-xs text-slate-600 mt-1">Atención personalizada de la propietaria Yonaisi Pilier.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- PRODUCT CATALOG SECTION -->
+        <section id="productos" class="py-16 lg:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-10">
+                <span class="text-xs font-bold tracking-widest text-honey-600 uppercase">Nuestra Selección</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-extrabold text-honey-950 mt-2">Productos Destacados</h2>
+                <p class="text-slate-600 text-sm mt-2">Selecciona la presentación ideal para endulzar tus mañanas o regalar salud a tus seres queridos.</p>
+            </div>
+
+            <!-- CATEGORY FILTER TABS -->
+            <div class="flex items-center justify-start sm:justify-center gap-2 overflow-x-auto pb-4 mb-8 no-scrollbar">
+                <button onclick="filterCategory('todos')" id="tab-todos" class="category-btn active px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all whitespace-nowrap bg-honey-600 text-white shadow-sm">
+                    Todos los productos
+                </button>
+                <button onclick="filterCategory('cruda')" id="tab-cruda" class="category-btn px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all whitespace-nowrap bg-white text-slate-700 hover:bg-honey-100 border border-honey-200">
+                    Miel Cruda
+                </button>
+                <button onclick="filterCategory('panal')" id="tab-panal" class="category-btn px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all whitespace-nowrap bg-white text-slate-700 hover:bg-honey-100 border border-honey-200">
+                    Miel con Panal
+                </button>
+                <button onclick="filterCategory('packs')" id="tab-packs" class="category-btn px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all whitespace-nowrap bg-white text-slate-700 hover:bg-honey-100 border border-honey-200">
+                    Kits & Regalos
+                </button>
+            </div>
+
+            <!-- PRODUCTS GRID -->
+            <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Products rendered via JS -->
+            </div>
+        </section>
+
+        <!-- ABOUT OWNER / BRAND SECTION -->
+        <section id="nosotros" class="py-16 bg-gradient-to-b from-honey-900 to-honey-950 text-white relative overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    
+                    <div class="lg:col-span-5 flex justify-center">
+                        <div class="relative w-64 h-64 sm:w-80 sm:h-80 rounded-full border-4 border-honey-400 p-2 shadow-2xl">
+                            <div class="w-full h-full rounded-full bg-honey-800 flex flex-col items-center justify-center text-center p-6 border-2 border-honey-300/40">
+                                <i class="fa-solid fa-user-check text-5xl text-honey-300 mb-3"></i>
+                                <span class="font-serif font-bold text-2xl text-honey-100">Yonaisi Pamela Pilier</span>
+                                <span class="text-xs uppercase tracking-widest text-honey-300 mt-1">Fundadora & Apicultora</span>
+                                <div class="mt-3 text-xs text-honey-200 italic">"Amor por la apicultura y el bienestar de nuestras familias."</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-7 space-y-5 text-center lg:text-left">
+                        <span class="text-xs font-bold tracking-widest text-honey-400 uppercase">Compromiso con la Calidad</span>
+                        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-honey-100">Apicultura limpia, responsable y de tradición dominicana</h2>
+                        <p class="text-honey-200/90 text-sm sm:text-base leading-relaxed">
+                            Bajo la dirección de <strong>Yonaisi Pamela Pilier</strong>, nos dedicamos a la recolección de miel pura garantizando procesos éticos con las abejas y un envasado higiénico artesanal. Cada frasco conserva el aroma florístico de las montañas y campos de nuestra isla.
+                        </p>
+
+                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-4 text-left">
+                            <div class="bg-honey-950/60 p-4 rounded-xl border border-honey-700/50">
+                                <i class="fa-solid fa-check text-honey-400 text-lg mb-1"></i>
+                                <p class="text-xs font-bold text-honey-100">Cero Filtrado Químico</p>
+                                <p class="text-[10px] text-honey-300/70">Conserva su polen natural.</p>
+                            </div>
+                            <div class="bg-honey-950/60 p-4 rounded-xl border border-honey-700/50">
+                                <i class="fa-solid fa-check text-honey-400 text-lg mb-1"></i>
+                                <p class="text-xs font-bold text-honey-100">Envases Sanitizados</p>
+                                <p class="text-[10px] text-honey-300/70">Vidrio de alta pureza.</p>
+                            </div>
+                            <div class="bg-honey-950/60 p-4 rounded-xl border border-honey-700/50 col-span-2 sm:col-span-1">
+                                <i class="fa-solid fa-check text-honey-400 text-lg mb-1"></i>
+                                <p class="text-xs font-bold text-honey-100">Trato Personalizado</p>
+                                <p class="text-[10px] text-honey-300/70">Atención directa por WhatsApp.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- TESTIMONIALS -->
+        <section id="testimonios" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <span class="text-xs font-bold tracking-widest text-honey-600 uppercase">Opiniones Reales</span>
+                <h2 class="font-serif text-3xl font-extrabold text-honey-950 mt-1">Lo que dicen nuestros clientes</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <div class="bg-white p-6 rounded-2xl border border-honey-200 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-honey-500 text-xs mb-3">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-slate-600 text-sm italic">"La mejor miel que he probado en Santo Domingo. Se nota inmediatamente la textura natural y pura, nada que ver con las del supermercado."</p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-100 flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-honey-200 text-honey-800 font-bold flex items-center justify-center text-sm">CL</div>
+                        <div>
+                            <p class="text-xs font-bold text-slate-900">Carmen L. Rosario</p>
+                            <p class="text-[10px] text-slate-400">Santo Domingo, RD</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl border border-honey-200 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-honey-500 text-xs mb-3">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-slate-600 text-sm italic">"El pedido me llegó al día siguiente por la agencia de envío. El panal de miel dentro del frasco es un espectáculo. Excelente atención de Yonaisi."</p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-100 flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-honey-200 text-honey-800 font-bold flex items-center justify-center text-sm">RM</div>
+                        <div>
+                            <p class="text-xs font-bold text-slate-900">Roberto Mateo</p>
+                            <p class="text-[10px] text-slate-400">Santiago de los Caballeros</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl border border-honey-200 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-honey-500 text-xs mb-3">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-slate-600 text-sm italic">"Compré el kit de regalo para mi madre y quedó fascinada con el aroma de flor de azahar. Recomiendo totalmente apoyarlos."</p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-100 flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-honey-200 text-honey-800 font-bold flex items-center justify-center text-sm">AV</div>
+                        <div>
+                            <p class="text-xs font-bold text-slate-900">Ana María Vargas</p>
+                            <p class="text-[10px] text-slate-400">La Romana, RD</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- FAQ ACCORDION -->
+        <section class="py-16 bg-honey-100/50 border-t border-honey-200">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-10">
+                    <span class="text-xs font-bold tracking-widest text-honey-600 uppercase">Resuelve tus dudas</span>
+                    <h2 class="font-serif text-3xl font-extrabold text-honey-950 mt-1">Preguntas Frecuentes</h2>
+                </div>
+
+                <div class="space-y-4">
+                    
+                    <div class="bg-white rounded-2xl border border-honey-200 shadow-sm overflow-hidden">
+                        <button onclick="toggleFaq(1)" class="w-full text-left px-6 py-4 font-bold text-slate-800 flex justify-between items-center hover:bg-honey-50 transition-colors">
+                            <span>¿Cómo sé si la miel es 100% pura y sin aditivos?</span>
+                            <i id="faq-icon-1" class="fa-solid fa-chevron-down text-honey-600 transition-transform"></i>
+                        </button>
+                        <div id="faq-ans-1" class="hidden px-6 pb-4 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-3">
+                            Nuestra miel no pasa por procesos térmicos extremos ni ultrapasteurización. Mantiene intactos sus granos de polen naturales y tiende a cristalizarse con el tiempo en temperaturas frescas, lo cual es la prueba reina de pureza orgánica.
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-2xl border border-honey-200 shadow-sm overflow-hidden">
+                        <button onclick="toggleFaq(2)" class="w-full text-left px-6 py-4 font-bold text-slate-800 flex justify-between items-center hover:bg-honey-50 transition-colors">
+                            <span>¿Hacen envíos a todas las provincias de RD?</span>
+                            <i id="faq-icon-2" class="fa-solid fa-chevron-down text-honey-600 transition-transform"></i>
+                        </button>
+                        <div id="faq-ans-2" class="hidden px-6 pb-4 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-3">
+                            ¡Sí! Enviamos a través de servicios de mensajería seguros como Caribe Pack, Metro Pac o envío expreso en zona metropolitana. Recibes en 24-48 horas.
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-2xl border border-honey-200 shadow-sm overflow-hidden">
+                        <button onclick="toggleFaq(3)" class="w-full text-left px-6 py-4 font-bold text-slate-800 flex justify-between items-center hover:bg-honey-50 transition-colors">
+                            <span>¿Cuáles son las vías de pago disponibles?</span>
+                            <i id="faq-icon-3" class="fa-solid fa-chevron-down text-honey-600 transition-transform"></i>
+                        </button>
+                        <div id="faq-ans-3" class="hidden px-6 pb-4 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-3">
+                            Aceptamos transferencia bancaria (Banreservas, BHD, Banco Popular), pago contra entrega en entregas directas y tarjetas de crédito/débito.
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT SECTION -->
+        <section id="contacto" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 bg-white rounded-3xl border border-honey-200 shadow-xl overflow-hidden">
+                
+                <!-- Contact Info Panel -->
+                <div class="lg:col-span-5 bg-gradient-to-br from-honey-800 to-honey-950 p-8 sm:p-10 text-white flex flex-col justify-between">
+                    <div>
+                        <span class="text-xs font-bold tracking-widest text-honey-300 uppercase">Atención Personalizada</span>
+                        <h3 class="font-serif text-3xl font-bold text-white mt-2">¿Tienes alguna duda o pedido especial?</h3>
+                        <p class="text-honey-200 text-xs sm:text-sm mt-3 leading-relaxed">
+                            Contáctate directamente con <strong>Yonaisi Pamela Pilier</strong>. Atendemos pedidos al por mayor, regalos corporativos y entregas residenciales.
+                        </p>
+
+                        <div class="mt-8 space-y-4 text-sm">
+                            <div class="flex items-center gap-4">
+                                <div class="w-10 h-10 rounded-xl bg-honey-700/60 flex items-center justify-center text-honey-300">
+                                    <i class="fa-solid fa-user"></i>
+                                </div>
+                                <div>
+                                    <p class="text-[10px] text-honey-300 uppercase font-semibold">Propietaria</p>
+                                    <p class="font-bold text-white">Yonaisi Pamela Pilier</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center gap-4">
+                                <div class="w-10 h-10 rounded-xl bg-honey-700/60 flex items-center justify-center text-honey-300">
+                                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                                </div>
+                                <div>
+                                    <p class="text-[10px] text-honey-300 uppercase font-semibold">Teléfono / WhatsApp</p>
+                                    <a href="https://wa.me/18493508614" target="_blank" class="font-bold text-white hover:underline">+1 (849) 350-8614</a>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center gap-4">
+                                <div class="w-10 h-10 rounded-xl bg-honey-700/60 flex items-center justify-center text-honey-300">
+                                    <i class="fa-regular fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <p class="text-[10px] text-honey-300 uppercase font-semibold">Correo Electrónico</p>
+                                    <a href="mailto:yonaisipamela@gmail.com" class="font-bold text-white hover:underline">yonaisipamela@gmail.com</a>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center gap-4">
+                                <div class="w-10 h-10 rounded-xl bg-honey-700/60 flex items-center justify-center text-honey-300">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                </div>
+                                <div>
+                                    <p class="text-[10px] text-honey-300 uppercase font-semibold">Ubicación</p>
+                                    <p class="font-bold text-white">República Dominicana</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 pt-6 border-t border-honey-700/60 flex items-center gap-3">
+                        <span class="text-xs text-honey-300">Síguenos:</span>
+                        <a href="#" class="w-8 h-8 rounded-full bg-honey-700/50 flex items-center justify-center text-white hover:bg-honey-600"><i class="fa-brands fa-instagram text-sm"></i></a>
+                        <a href="#" class="w-8 h-8 rounded-full bg-honey-700/50 flex items-center justify-center text-white hover:bg-honey-600"><i class="fa-brands fa-facebook-f text-sm"></i></a>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="lg:col-span-7 p-8 sm:p-10 flex flex-col justify-center">
+                    <h4 class="font-serif text-2xl font-bold text-honey-950 mb-2">Envíanos un mensaje</h4>
+                    <p class="text-xs text-slate-500 mb-6">Completa tus datos y nos pondremos en contacto contigo a la brevedad.</p>
+
+                    <form onsubmit="handleContactSubmit(event)" class="space-y-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1">Nombre Completo *</label>
+                                <input type="text" required placeholder="Ej. Ana García" class="w-full bg-honey-50/50 border border-honey-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-honey-500">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1">Teléfono / WhatsApp *</label>
+                                <input type="tel" required placeholder="Ej. 809-000-0000" class="w-full bg-honey-50/50 border border-honey-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-honey-500">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">Correo Electrónico</label>
+                            <input type="email" placeholder="tuemail@ejemplo.com" class="w-full bg-honey-50/50 border border-honey-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-honey-500">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">Mensaje o Consulta *</label>
+                            <textarea rows="4" required placeholder="Hola Yonaisi, me interesa encargar miel para..." class="w-full bg-honey-50/50 border border-honey-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-honey-500"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full py-3.5 bg-honey-600 hover:bg-honey-700 text-white font-bold rounded-xl shadow-md transition-all text-sm flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-paper-plane"></i>
+                            <span>Enviar Mensaje</span>
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-honey-950 text-honey-200 text-xs border-t border-honey-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                
+                <div class="space-y-3">
+                    <div class="flex items-center gap-2">
+                        <div class="w-8 h-8 rounded-lg bg-honey-500 flex items-center justify-center text-white">
+                            <i class="fa-solid fa-jar"></i>
+                        </div>
+                        <span class="font-serif font-bold text-lg text-white">Miel Pura</span>
+                    </div>
+                    <p class="text-honey-300/80 leading-relaxed text-xs">
+                        Apicultura artesanal y natural en República Dominicana. Entregando dulzor auténtico de la colmena a tu mesa.
+                    </p>
+                </div>
+
+                <div>
+                    <h5 class="font-bold text-white text-sm mb-3">Enlaces Rápidos</h5>
+                    <ul class="space-y-2 text-honey-300">
+                        <li><a href="#inicio" class="hover:text-honey-400">Inicio</a></li>
+                        <li><a href="#productos" class="hover:text-honey-400">Catálogo de Mieles</a></li>
+                        <li><a href="#beneficios" class="hover:text-honey-400">Beneficios para la Salud</a></li>
+                        <li><a href="#nosotros" class="hover:text-honey-400">Sobre Yonaisi Pilier</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h5 class="font-bold text-white text-sm mb-3">Contacto Directo</h5>
+                    <ul class="space-y-2 text-honey-300">
+                        <li><i class="fa-solid fa-user text-honey-500 mr-2"></i> Yonaisi Pamela Pilier</li>
+                        <li><i class="fa-solid fa-phone text-honey-500 mr-2"></i> +1 (849) 350-8614</li>
+                        <li><i class="fa-solid fa-envelope text-honey-500 mr-2"></i> yonaisipamela@gmail.com</li>
+                        <li><i class="fa-solid fa-location-dot text-honey-500 mr-2"></i> República Dominicana</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h5 class="font-bold text-white text-sm mb-3">Garantía de Satisfacción</h5>
+                    <p class="text-honey-300/80 mb-3">Garantizamos la pureza de cada gota. Si tienes alguna duda, escríbenos directamente.</p>
+                    <a href="https://wa.me/18493508614" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl transition-colors">
+                        <i class="fa-brands fa-whatsapp text-sm"></i> Chatear por WhatsApp
+                    </a>
+                </div>
+
+            </div>
+
+            <div class="pt-6 border-t border-honey-900 text-center text-honey-400 text-[11px] flex flex-col sm:flex-row items-center justify-between gap-2">
+                <p>&copy; 2026 Miel Pura — Yonaisi Pamela Pilier. Todos los derechos reservados.</p>
+                <p>Hecho con amor en República Dominicana 🇩🇴</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- CART DRAWER (SLIDE-OVER) -->
+    <div id="cartOverlay" onclick="toggleCartDrawer()" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 hidden transition-opacity"></div>
+    <aside id="cartDrawer" class="fixed top-0 right-0 h-full w-full sm:w-96 bg-white z-50 shadow-2xl transform translate-x-full transition-transform duration-300 flex flex-col">
+        <div class="p-4 sm:p-6 bg-honey-900 text-white flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <i class="fa-solid fa-basket-shopping text-honey-400 text-xl"></i>
+                <h3 class="font-serif font-bold text-lg">Tu Carrito de Compras</h3>
+            </div>
+            <button onclick="toggleCartDrawer()" class="p-1 rounded-lg hover:bg-honey-800 text-honey-200">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+        </div>
+
+        <!-- Cart Items list -->
+        <div id="cartItemsContainer" class="flex-grow p-4 sm:p-6 overflow-y-auto space-y-4">
+            <!-- Items rendered by JS -->
+        </div>
+
+        <!-- Cart Footer / Summary -->
+        <div class="p-4 sm:p-6 border-t border-slate-100 bg-honey-50/60 space-y-3">
+            <div class="flex justify-between text-xs text-slate-600">
+                <span>Subtotal</span>
+                <span id="cartSubtotal" class="font-bold text-slate-900">RD$ 0.00</span>
+            </div>
+            <div class="flex justify-between text-xs text-slate-600">
+                <span>Envío estimado</span>
+                <span id="cartShipping" class="font-semibold text-emerald-600">Calculado en checkout</span>
+            </div>
+            <div class="flex justify-between text-sm font-extrabold text-honey-950 pt-2 border-t border-honey-200">
+                <span>Total Estimado</span>
+                <span id="cartTotal" class="text-lg text-honey-700">RD$ 0.00</span>
+            </div>
+
+            <button onclick="openCheckoutModal()" id="btnCheckout" disabled class="w-full py-3.5 bg-honey-600 hover:bg-honey-700 disabled:bg-slate-300 disabled:cursor-not-allowed text-white font-bold rounded-xl shadow-md transition-all text-sm flex items-center justify-center gap-2">
+                <i class="fa-solid fa-credit-card"></i>
+                <span>Finalizar Compra</span>
+            </button>
+        </div>
+    </aside>
+
+    <!-- QUICK VIEW MODAL -->
+    <div id="quickViewModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-2xl w-full p-6 sm:p-8 relative shadow-2xl overflow-hidden max-h-[90vh] overflow-y-auto">
+            <button onclick="closeQuickView()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-600">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div id="quickViewContent" class="grid grid-cols-1 sm:grid-cols-2 gap-6 items-center">
+                <!-- Injected via JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- CHECKOUT MODAL -->
+    <div id="checkoutModal" class="fixed inset-0 bg-slate-900/65 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4 overflow-y-auto">
+        <div class="bg-white rounded-3xl max-w-xl w-full p-6 sm:p-8 relative shadow-2xl my-8">
+            <button onclick="closeCheckoutModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-600">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <h3 class="font-serif text-2xl font-bold text-honey-950 mb-1">Finalizar Compra</h3>
+            <p class="text-xs text-slate-500 mb-6">Ingresa tus datos para procesar el pedido. Podrás confirmarlo vía WhatsApp directamente con Yonaisi Pilier.</p>
+
+            <form onsubmit="processOrder(event)" class="space-y-4 text-xs">
+                <div>
+                    <label class="block font-bold text-slate-700 mb-1">Nombre Completo *</label>
+                    <input type="text" id="custName" required placeholder="Ej. Maria Fernández" class="w-full bg-honey-50/50 border border-honey-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-honey-500">
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                        <label class="block font-bold text-slate-700 mb-1">Teléfono / WhatsApp *</label>
+                        <input type="tel" id="custPhone" required placeholder="Ej. 849-000-0000" class="w-full bg-honey-50/50 border border-honey-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-honey-500">
+                    </div>
+                    <div>
+                        <label class="block font-bold text-slate-700 mb-1">Ciudad / Provincia *</label>
+                        <input type="text" id="custCity" required placeholder="Ej. Santo Domingo" class="w-full bg-honey-50/50 border border-honey-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-honey-500">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block font-bold text-slate-700 mb-1">Dirección de Entrega Exacta *</label>
+                    <textarea id="custAddress" rows="2" required placeholder="Calle, Sector, Edificio o Punto de Referencia" class="w-full bg-honey-50/50 border border-honey-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-honey-500"></textarea>
+                </div>
+
+                <div>
+                    <label class="block font-bold text-slate-700 mb-1">Método de Pago Preferido</label>
+                    <select id="custPayment" class="w-full bg-honey-50/50 border border-honey-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-honey-500 font-medium">
+                        <option value="Transferencia Bancaria">Transferencia Bancaria (Banreservas / BHD / Popular)</option>
+                        <option value="Pago Contra Entrega">Pago Contra Entrega (Efectivo)</option>
+                        <option value="Tarjeta de Crédito/Débito">Tarjeta de Crédito / Débito</option>
+                    </select>
+                </div>
+
+                <!-- Summary Box inside Modal -->
+                <div class="bg-honey-100/70 p-4 rounded-xl border border-honey-200 space-y-1">
+                    <div class="flex justify-between font-bold text-slate-800 text-sm">
+                        <span>Total del Pedido:</span>
+                        <span id="modalOrderTotal" class="text-honey-700">RD$ 0.00</span>
+                    </div>
+                    <p class="text-[11px] text-slate-500">Al hacer clic en "Confirmar y Enviar por WhatsApp", te redirigiremos para enviar los detalles del pedido directamente a Yonaisi Pamela Pilier.</p>
+                </div>
+
+                <button type="submit" class="w-full py-3.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl shadow-lg transition-all text-sm flex items-center justify-center gap-2">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span>Confirmar y Enviar por WhatsApp</span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- FLOATING WHATSAPP BUTTON -->
+    <a href="https://wa.me/18493508614?text=Hola%20Yonaisi,%20quisiera%20informaci%C3%B3n%20sobre%20tus%20productos%20de%20miel" target="_blank" class="fixed bottom-6 right-6 z-40 bg-emerald-500 hover:bg-emerald-600 text-white w-14 h-14 rounded-full shadow-2xl flex items-center justify-center text-3xl transition-transform hover:scale-110 gold-glow" aria-label="Contacto WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- TOAST NOTIFICATION CONTAINER -->
+    <div id="toast" class="fixed top-24 right-5 z-50 transform translate-x-72 transition-transform duration-300 bg-honey-900 text-white px-5 py-3 rounded-2xl shadow-xl flex items-center gap-3 text-sm font-semibold border border-honey-500">
+        <i class="fa-solid fa-circle-check text-honey-400 text-lg"></i>
+        <span id="toastMsg">Mensaje aquí</span>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // PRODUCTS DATABASE
+        const products = [
+            {
+                id: 1,
+                name: "Miel Cruda Multifloral",
+                category: "cruda",
+                size: "500g (Frasco mediano)",
+                price: 450,
+                rating: "4.9",
+                badge: "Más Vendido",
+                desc: "Miel 100% pura sin filtrar, cosechada de flores silvestres del valle. Rica en polen, sabor suave y floral.",
+                icon: "fa-jar",
+                bgGradient: "from-amber-100 to-amber-200"
+            },
+            {
+                id: 2,
+                name: "Miel Pura Familiar",
+                category: "cruda",
+                size: "1 kg (Frasco Grande)",
+                price: 850,
+                rating: "5.0",
+                badge: "Mejor Valor",
+                desc: "La opción familiar ideal. Miel artesanal de consistencia dorada e intensa, perfecta para el consumo diario.",
+                icon: "fa-box-tissue",
+                bgGradient: "from-yellow-100 to-amber-200"
+            },
+            {
+                id: 3,
+                name: "Miel con Panal Natural",
+                category: "panal",
+                size: "400g con cera virgen",
+                price: 650,
+                rating: "4.9",
+                badge: "Especialidad",
+                desc: "Incluye un trozo de panal de cera de abejas 100% comestible y nutritivo. Una experiencia gourmet única.",
+                icon: "fa-cube",
+                bgGradient: "from-amber-200 to-yellow-300"
+            },
+            {
+                id: 4,
+                name: "Miel Infusionada de Azahar",
+                category: "cruda",
+                size: "350g (Edición Limitada)",
+                price: 550,
+                rating: "4.8",
+                badge: "Aromática",
+                desc: "Extraída de colmenas situadas en huertos de cítricos. Posee un toque de azahar refrescante y aroma sutil.",
+                icon: "fa-lemon",
+                bgGradient: "from-amber-100 to-yellow-100"
+            },
+            {
+                id: 5,
+                name: "Kit Pack Degustación",
+                category: "packs",
+                size: "3 frascos x 150g c/u",
+                price: 950,
+                rating: "5.0",
+                badge: "Para Regalo",
+                desc: "Incluye 3 variedades: Miel Multifloral, Miel con Panal y Miel de Azahar en una elegante caja decorativa.",
+                icon: "fa-gifts",
+                bgGradient: "from-amber-300 to-amber-400"
+            },
+            {
+                id: 6,
+                name: "Miel Silvestre Silenciosa",
+                category: "cruda",
+                size: "750g (Envase de vidrio)",
+                price: 750,
+                rating: "4.9",
+                badge: "Orgánica",
+                desc: "Cosechada en zonas protegidas de montaña. Color ámbar oscuro y alta densidad de fitonutrientes.",
+                icon: "fa-mountain-sun",
+                bgGradient: "from-yellow-200 to-amber-300"
+            }
+        ];
+
+        // CART STATE
+        let cart = [];
+
+        // RENDER PRODUCTS
+        function renderProducts(itemsToRender = products) {
+            const grid = document.getElementById('productsGrid');
+            grid.innerHTML = '';
+
+            if(itemsToRender.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full py-12 text-center text-slate-500">
+                        <i class="fa-solid fa-magnifying-glass text-4xl mb-3 text-honey-400"></i>
+                        <p class="font-bold">No se encontraron productos.</p>
+                        <p class="text-xs">Intenta con otra búsqueda o filtro.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            itemsToRender.forEach(prod => {
+                const card = document.createElement('div');
+                card.className = "bg-white rounded-3xl border border-honey-200/80 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between overflow-hidden group";
+                card.innerHTML = `
+                    <div>
+                        <!-- Image / Visual Banner -->
+                        <div class="h-48 bg-gradient-to-br ${prod.bgGradient} relative flex items-center justify-center p-6">
+                            <span class="absolute top-3 left-3 bg-white/90 backdrop-blur-sm text-honey-900 font-extrabold text-[10px] px-3 py-1 rounded-full uppercase tracking-wider shadow-sm">
+                                ${prod.badge}
+                            </span>
+                            <button onclick="openQuickView(${prod.id})" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/90 text-slate-700 hover:text-honey-600 flex items-center justify-center shadow-sm opacity-90 hover:opacity-100 transition-opacity" title="Vista Rápida">
+                                <i class="fa-regular fa-eye text-xs"></i>
+                            </button>
+                            <div class="w-24 h-24 rounded-full bg-white shadow-md flex items-center justify-center text-honey-600 text-4xl group-hover:scale-110 transition-transform duration-300">
+                                <i class="fa-solid ${prod.icon}"></i>
+                            </div>
+                        </div>
+
+                        <!-- Card Content -->
+                        <div class="p-6">
+                            <div class="flex items-center justify-between text-xs text-slate-500 mb-1">
+                                <span class="font-medium text-honey-700 bg-honey-50 px-2.5 py-0.5 rounded-full border border-honey-200">${prod.size}</span>
+                                <div class="flex items-center gap-1 text-honey-500 font-bold">
+                                    <i class="fa-solid fa-star"></i>
+                                    <span>${prod.rating}</span>
+                                </div>
+                            </div>
+                            <h3 class="font-serif font-bold text-xl text-honey-950 mt-2">${prod.name}</h3>
+                            <p class="text-xs text-slate-500 mt-2 line-clamp-2">${prod.desc}</p>
+                        </div>
+                    </div>
+
+                    <!-- Card Footer / Price & Add Button -->
+                    <div class="p-6 pt-0 border-t border-slate-50/50 flex items-center justify-between mt-2">
+                        <div>
+                            <span class="text-[10px] text-slate-400 font-semibold block">Precio</span>
+                            <span class="font-serif font-extrabold text-xl text-honey-900">RD$ ${prod.price.toLocaleString()}</span>
+                        </div>
+                        <button onclick="addToCart(${prod.id})" class="px-4 py-2.5 bg-honey-600 hover:bg-honey-700 text-white font-bold text-xs rounded-xl shadow-md hover:shadow-lg transition-all flex items-center gap-2">
+                            <i class="fa-solid fa-cart-plus"></i>
+                            <span>Agregar</span>
+                        </button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // CATEGORY FILTER
+        function filterCategory(cat) {
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                btn.className = "category-btn px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all whitespace-nowrap bg-white text-slate-700 hover:bg-honey-100 border border-honey-200";
+            });
+            const activeBtn = document.getElementById(`tab-${cat}`);
+            if(activeBtn) {
+                activeBtn.className = "category-btn active px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all whitespace-nowrap bg-honey-600 text-white shadow-sm";
+            }
+
+            if(cat === 'todos') {
+                renderProducts(products);
+            } else {
+                const filtered = products.filter(p => p.category === cat);
+                renderProducts(filtered);
+            }
+        }
+
+        // SEARCH HANDLE
+        function handleSearch(query) {
+            const q = query.toLowerCase().trim();
+            if(!q) {
+                renderProducts(products);
+                return;
+            }
+            const matched = products.filter(p => 
+                p.name.toLowerCase().includes(q) || 
+                p.desc.toLowerCase().includes(q) || 
+                p.size.toLowerCase().includes(q)
+            );
+            renderProducts(matched);
+        }
+
+        // CART LOGIC
+        function addToCart(productId, qty = 1) {
+            const prod = products.find(p => p.id === productId);
+            if(!prod) return;
+
+            const existingIndex = cart.findIndex(item => item.id === productId);
+            if(existingIndex > -1) {
+                cart[existingIndex].qty += qty;
+            } else {
+                cart.push({ ...prod, qty: qty });
+            }
+
+            updateCartUI();
+            showToast(`¡${prod.name} agregado al carrito!`);
+        }
+
+        function updateCartQty(productId, change) {
+            const index = cart.findIndex(item => item.id === productId);
+            if(index > -1) {
+                cart[index].qty += change;
+                if(cart[index].qty <= 0) {
+                    cart.splice(index, 1);
+                }
+            }
+            updateCartUI();
+        }
+
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            updateCartUI();
+            showToast("Producto eliminado del carrito");
+        }
+
+        function updateCartUI() {
+            // Update badge count
+            const totalCount = cart.reduce((acc, item) => acc + item.qty, 0);
+            document.getElementById('cartCountBadge').textContent = totalCount;
+
+            // Render items list
+            const container = document.getElementById('cartItemsContainer');
+            const btnCheckout = document.getElementById('btnCheckout');
+
+            if(cart.length === 0) {
+                container.innerHTML = `
+                    <div class="h-full flex flex-col items-center justify-center text-center text-slate-400 py-12">
+                        <i class="fa-solid fa-basket-shopping text-5xl text-honey-200 mb-3"></i>
+                        <p class="font-bold text-slate-600">Tu carrito está vacío</p>
+                        <p class="text-xs mt-1">Explora nuestro catálogo y agrega mieles artesanales.</p>
+                    </div>
+                `;
+                document.getElementById('cartSubtotal').textContent = "RD$ 0.00";
+                document.getElementById('cartTotal').textContent = "RD$ 0.00";
+                btnCheckout.disabled = true;
+                return;
+            }
+
+            btnCheckout.disabled = false;
+            container.innerHTML = '';
+
+            let subtotal = 0;
+
+            cart.forEach(item => {
+                const itemTotal = item.price * item.qty;
+                subtotal += itemTotal;
+
+                const itemEl = document.createElement('div');
+                itemEl.className = "flex items-center justify-between p-3 bg-white rounded-2xl border border-honey-200 shadow-sm";
+                itemEl.innerHTML = `
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 rounded-xl bg-honey-100 flex items-center justify-center text-honey-600 text-lg font-bold shrink-0">
+                            <i class="fa-solid ${item.icon}"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-xs text-slate-800">${item.name}</h4>
+                            <p class="text-[10px] text-slate-400">${item.size}</p>
+                            <span class="font-extrabold text-xs text-honey-800">RD$ ${item.price.toLocaleString()}</span>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-2">
+                        <div class="flex items-center bg-honey-50 border border-honey-200 rounded-lg">
+                            <button onclick="updateCartQty(${item.id}, -1)" class="w-6 h-6 flex items-center justify-center text-xs text-slate-600 hover:bg-honey-200 rounded-l-lg font-bold">-</button>
+                            <span class="w-6 text-center text-xs font-bold text-slate-800">${item.qty}</span>
+                            <button onclick="updateCartQty(${item.id}, 1)" class="w-6 h-6 flex items-center justify-center text-xs text-slate-600 hover:bg-honey-200 rounded-r-lg font-bold">+</button>
+                        </div>
+                        <button onclick="removeFromCart(${item.id})" class="text-slate-400 hover:text-red-500 p-1 text-xs">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </button>
+                    </div>
+                `;
+                container.appendChild(itemEl);
+            });
+
+            const shipping = subtotal >= 1500 ? 0 : 200;
+            const total = subtotal + (cart.length > 0 ? shipping : 0);
+
+            document.getElementById('cartSubtotal').textContent = `RD$ ${subtotal.toLocaleString()}`;
+            document.getElementById('cartShipping').textContent = shipping === 0 ? "¡GRATIS!" : `RD$ ${shipping}`;
+            document.getElementById('cartTotal').textContent = `RD$ ${total.toLocaleString()}`;
+        }
+
+        // DRAWER TOGGLE
+        function toggleCartDrawer() {
+            const drawer = document.getElementById('cartDrawer');
+            const overlay = document.getElementById('cartOverlay');
+            const isHidden = drawer.classList.contains('translate-x-full');
+
+            if(isHidden) {
+                drawer.classList.remove('translate-x-full');
+                overlay.classList.remove('hidden');
+            } else {
+                drawer.classList.add('translate-x-full');
+                overlay.classList.add('hidden');
+            }
+        }
+
+        // QUICK VIEW MODAL
+        function openQuickView(productId) {
+            const prod = products.find(p => p.id === productId);
+            if(!prod) return;
+
+            const modal = document.getElementById('quickViewModal');
+            const content = document.getElementById('quickViewContent');
+
+            content.innerHTML = `
+                <div class="h-64 rounded-2xl bg-gradient-to-br ${prod.bgGradient} flex items-center justify-center text-honey-700 text-6xl shadow-inner">
+                    <i class="fa-solid ${prod.icon}"></i>
+                </div>
+                <div class="space-y-4">
+                    <span class="bg-honey-100 text-honey-800 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider border border-honey-200">
+                        ${prod.badge}
+                    </span>
+                    <h3 class="font-serif font-bold text-2xl text-honey-950">${prod.name}</h3>
+                    <p class="text-xs font-semibold text-honey-700">${prod.size}</p>
+                    <p class="text-xs text-slate-600 leading-relaxed">${prod.desc}</p>
+                    
+                    <div class="pt-2">
+                        <span class="text-xs text-slate-400 block">Precio Unitario</span>
+                        <span class="font-serif font-extrabold text-3xl text-honey-900">RD$ ${prod.price.toLocaleString()}</span>
+                    </div>
+
+                    <div class="pt-4 flex items-center gap-3">
+                        <button onclick="addToCart(${prod.id}); closeQuickView();" class="flex-grow py-3 bg-honey-600 hover:bg-honey-700 text-white font-bold rounded-xl shadow-md text-sm flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-cart-plus"></i>
+                            <span>Agregar al Carrito</span>
+                        </button>
+                    </div>
+                </div>
+            `;
+
+            modal.classList.remove('hidden');
+        }
+
+        function closeQuickView() {
+            document.getElementById('quickViewModal').classList.add('hidden');
+        }
+
+        // CHECKOUT MODAL
+        function openCheckoutModal() {
+            if(cart.length === 0) return;
+            toggleCartDrawer();
+
+            const subtotal = cart.reduce((acc, i) => acc + (i.price * i.qty), 0);
+            const shipping = subtotal >= 1500 ? 0 : 200;
+            const total = subtotal + shipping;
+
+            document.getElementById('modalOrderTotal').textContent = `RD$ ${total.toLocaleString()}`;
+            document.getElementById('checkoutModal').classList.remove('hidden');
+        }
+
+        function closeCheckoutModal() {
+            document.getElementById('checkoutModal').classList.add('hidden');
+        }
+
+        // PROCESS ORDER & WHATSAPP REDIRECT
+        function processOrder(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('custName').value.trim();
+            const phone = document.getElementById('custPhone').value.trim();
+            const city = document.getElementById('custCity').value.trim();
+            const address = document.getElementById('custAddress').value.trim();
+            const payment = document.getElementById('custPayment').value;
+
+            const subtotal = cart.reduce((acc, i) => acc + (i.price * i.qty), 0);
+            const shipping = subtotal >= 1500 ? 0 : 200;
+            const total = subtotal + shipping;
+
+            // Formulate WhatsApp message text
+            let msg = `🍯 *NUEVO PEDIDO — MIEL PURA*\n`;
+            msg += `*Cliente:* ${name}\n`;
+            msg += `*Teléfono:* ${phone}\n`;
+            msg += `*Ciudad/Provincia:* ${city}\n`;
+            msg += `*Dirección:* ${address}\n`;
+            msg += `*Método de Pago:* ${payment}\n\n`;
+            msg += `📦 *DETALLE DEL PEDIDO:*\n`;
+
+            cart.forEach(item => {
+                msg += `• ${item.name} (${item.size}) x${item.qty} = RD$ ${(item.price * item.qty).toLocaleString()}\n`;
+            });
+
+            msg += `\n*Subtotal:* RD$ ${subtotal.toLocaleString()}`;
+            msg += `\n*Envío:* ${shipping === 0 ? 'Gratis' : 'RD$ ' + shipping}`;
+            msg += `\n*TOTAL:* RD$ ${total.toLocaleString()}\n\n`;
+            msg += `¡Hola Yonaisi! Deseo confirmar este pedido de miel pura.`;
+
+            const encodedMsg = encodeURIComponent(msg);
+            const whatsappUrl = `https://wa.me/18493508614?text=${encodedMsg}`;
+
+            // Reset Cart & Close Modal
+            cart = [];
+            updateCartUI();
+            closeCheckoutModal();
+
+            showToast("¡Pedido listo! Abriendo WhatsApp...");
+
+            // Redirect to WhatsApp after short delay
+            setTimeout(() => {
+                window.open(whatsappUrl, '_blank');
+            }, 800);
+        }
+
+        // FAQ ACCORDION TOGGLE
+        function toggleFaq(id) {
+            const ans = document.getElementById(`faq-ans-${id}`);
+            const icon = document.getElementById(`faq-icon-${id}`);
+            
+            if(ans.classList.contains('hidden')) {
+                ans.classList.remove('hidden');
+                icon.classList.add('rotate-180');
+            } else {
+                ans.classList.add('hidden');
+                icon.classList.remove('rotate-180');
+            }
+        }
+
+        // MOBILE MENU TOGGLE
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        // CONTACT FORM SUBMIT
+        function handleContactSubmit(e) {
+            e.preventDefault();
+            showToast("¡Mensaje enviado con éxito! Te responderemos pronto.");
+            e.target.reset();
+        }
+
+        // TOAST ALERT SYSTEM
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMsg').textContent = message;
+            toast.classList.remove('translate-x-72');
+
+            setTimeout(() => {
+                toast.classList.add('translate-x-72');
+            }, 3000);
+        }
+
+        // INITIALIZE APP ON LOAD
+        window.onload = function() {
+            renderProducts(products);
+            updateCartUI();
+        };
+    </script>
+</body>
+</html>
